@@ -5,7 +5,6 @@ const fs = require('fs');
 csv()
 .fromFile(`${__dirname}/data.csv`)
 .then((json)=>{
-    console.log(json);
     const html = json.map(row => `
 <tr>
     <td>${row.name}</td>
@@ -15,7 +14,7 @@ csv()
         `none`
     }</td>
 </tr>
-    `)
+    `).join('');
 
     fs.writeFileSync('./index.html', html);
 })
